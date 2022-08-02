@@ -11,7 +11,7 @@ const descriptionInput = document.querySelector('.popup__input_type_description'
 
 const formElement = document.querySelector('.popup__form');                         // Форма
 
-// Popup's Variables // 
+
 const popupSelectors = {
     popupEditProfile: '.popup_edit_profile', // попап редактирования профиля
     popupEditCard: '.popup_edit_card', // попап редактирования карточек
@@ -22,6 +22,11 @@ const popupSelectors = {
 
     closeCardButton: '.popup__close',
 
+    inputNameEditCard: '.popup__input_type_name', // инпут для добавлени карточки, места
+
+    template: '#card-item', // Карточка
+    list: '.card', // Лист карточек
+    cardName: '.card__title'
 };
 
 const popupEditProfile = document.querySelector(popupSelectors.popupEditProfile); // поиск DOM элемента попапа редактировани профиля
@@ -33,7 +38,15 @@ const editCardButton = document.querySelector(popupSelectors.editCardButton); //
 
 const closeCardButton = popupEditCard.querySelector(popupSelectors.closeCardButton);
 
-console.log(closeCardButton);
+const inputNameEditCard = popupEditCard.querySelector(popupSelectors.inputNameEditCard);
+
+const template = document.querySelector(popupSelectors.template).content.children[0]; // Темплейт, тело карточки
+const list = document.querySelector(popupSelectors.list);
+const cardName = template.querySelector(popupSelectors.cardName);
+
+console.log(template);
+// Функция возвращения ноды темплейта
+function 
 
 // Функции открытия и закрытия попапа
 function openPopup(popupElement) {  // функция открытия попапа + сохраненеия данных в атрибутах
@@ -76,9 +89,6 @@ formElement.addEventListener('submit', submitForm);
 
 //
 
-
-// пр2
-
 const initialCards = [
     { name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'},
@@ -99,3 +109,9 @@ const initialCards = [
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'}
   ];
 
+function addCard(name, link){
+  const cardItem = template.cloneNode(true);
+  cardItemCardName.textcontent = name; 
+
+  list.append(cardItem);
+};
